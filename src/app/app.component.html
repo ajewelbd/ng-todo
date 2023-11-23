@@ -1,24 +1,13 @@
 <div class="flex flex-col justify-between h-[100dvh]">
 	<div>
 		<header class="flex justify-between w-full px-12 py-1 items-center bg-slate-800">
-			<div class="flex flex-col items-center w-12 rounded bg-slate-100 px-1 py-0.5">
-				<img src="/assets/brand-logo.png" class="w-8 h-8" />
+			<div class="flex flex-col items-center rounded bg-slate-100 px-1.5 pt-0.5">
+				<img src="/assets/brand-logo.png" class="w-7 h-7" />
 				<p class="text-xs font-medium">Todo's</p>
 			</div>
 			<h4 class="font-medium text-zinc-300">Welcome, guest</h4>
 		</header>
 		<section class="mt-12 px-12">
-			<div class="flex flex-col gap-y-1 mb-3">
-				<a href="/new-todo">
-					<button class="flex gap-x-1 items-center px-3 py-1 bg-blue-600 rounded self-end">
-						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-zinc-200">
-							<path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-						</svg>
-						<p class="text-sm font-mdeium text-zinc-200">Add</p>
-					</button>
-				</a>
-				<hr>
-			</div>
 			<router-outlet></router-outlet>
 		</section>
 	</div>

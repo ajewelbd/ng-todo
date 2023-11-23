@@ -1,9 +1,21 @@
+<div class="flex flex-col gap-y-1 mb-3">
+    <button [routerLink]="['/new-todo']" class="flex gap-x-1 items-center px-3 py-1 bg-blue-600 text-gray-100 rounded self-end">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-zinc-200">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <p class="text-sm font-mdeium">Add</p>
+    </button>
+    <hr>
+</div>
 <div class="flex flex-col gap-y-3">
 @for (todo of todos; track todo.id) {
     <div class="flex justify-between items-center bg-zinc-100 px-3 py-1 rounded shadow">
-        <p>{{todo.title}}</p>
+        <div class="flex gap-x-3 items-center">
+            <input [id]="['completed' + todo.title]" type="checkbox" class="rounded" [checked]="todo.completed" (change)="toggleCompleted(todo)" />
+            <label [for]="['completed' + todo.title]" [ngClass]="{'line-through': todo.completed}">{{todo.title}}</label>
+        </div>
         <div class="flex gap-x-1 items-center">
-            <button (click)="edit(todo.id)">
+            <button [routerLink]="['/todo/']" [queryParams]="{id: todo.id}">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-zinc-600">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
                 </svg>                  
@@ -17,3 +29,23 @@
     </div>
 }
 </div>
+
+<dialog class="rounded-lg transition-opacity" #deleteModal>
+    <div class="flex flex-col gap-y-12 p-7 items-center justify-center">
+        <p class="text-sm font-medium text-zinc-800">Are you sure?</p>
+        <div class="flex gap-x-3">
+            <button class="flex gap-x-1 items-center px-2 py-1 rounded text-sm text-zinc-100 font-medium bg-blue-700" (click)="delete()">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" />
+                </svg>                  
+                Yes
+            </button>
+            <button class="flex gap-x-1 items-center px-2 py-1 rounded text-sm text-zinc-100 font-medium bg-red-700" (click)="deleteModal.close()">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.28 7.22a.75.75 0 00-1.06 1.06L8.94 10l-1.72 1.72a.75.75 0 101.06 1.06L10 11.06l1.72 1.72a.75.75 0 101.06-1.06L11.06 10l1.72-1.72a.75.75 0 00-1.06-1.06L10 8.94 8.28 7.22z" clip-rule="evenodd" />
+                </svg>       
+                No
+            </button>
+        </div>
+    </div>
+</dialog>

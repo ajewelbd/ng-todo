@@ -1,7 +1,8 @@
 import { Routes } from '@angular/router';
 import { TodosComponent } from './todos/todos.component';
-import { NewTodoComponent } from './new-todo/new-todo.component';
+import { TodoFormComponent } from './new-todo/todo-form.component';
 import { TodoComponent } from './todo/todo.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 export const routes: Routes = [
     {
@@ -10,10 +11,14 @@ export const routes: Routes = [
     },
     {
         path: "new-todo",
-        component: NewTodoComponent
+        component: TodoFormComponent
     },
     {
-        path: "todo/:id",
-        component: TodoComponent
+        path: "todo",
+        component: TodoFormComponent
+    },
+    {
+        path: "**",
+        component: NotFoundComponent
     }
 ];

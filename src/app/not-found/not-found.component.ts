@@ -2,12 +2,12 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-new-todo',
+  selector: 'app-not-found',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './new-todo.component.html',
-  styleUrl: './new-todo.component.scss'
+  templateUrl: './not-found.component.html',
+  styleUrl: './not-found.component.scss'
 })
-export class NewTodoComponent {
+export class NotFoundComponent {
 
 }
